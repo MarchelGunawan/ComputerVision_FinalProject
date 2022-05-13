@@ -6,7 +6,7 @@ import numpy as np
 
 
 class handDetector:
-    def __init__(self, mode=False, maxHands=2, modelComplexcity = 1, detectionCon=0.5, trackCon=0.5):
+    def __init__(self, mode=False, maxHands=2, modelComplexcity=1, detectionCon=0.5, trackCon=0.5):
         self.mode = mode
         self.maxHands = maxHands
         self.detectionCon = detectionCon
@@ -14,7 +14,8 @@ class handDetector:
         self.modelComplexcity = modelComplexcity
 
         self.mpHands = mp.solutions.hands
-        self.hands = self.mpHands.Hands(self.mode, self.maxHands, self.modelComplexcity, self.detectionCon, self.trackCon)
+        self.hands = self.mpHands.Hands(self.mode, self.maxHands, self.modelComplexcity, self.detectionCon,
+                                        self.trackCon)
         self.mpDraw = mp.solutions.drawing_utils
         self.tipIds = [4, 8, 12, 16, 20]
 
@@ -84,7 +85,7 @@ class handDetector:
 
         return fingers
 
-    def findDistance(self, p1, p2, img, draw=True,r=15, t=3):
+    def findDistance(self, p1, p2, img, draw=True, r=15, t=3):
         x1, y1 = self.lmList[p1][1:]
         x2, y2 = self.lmList[p2][1:]
         cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
